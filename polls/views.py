@@ -16,3 +16,14 @@ def apiHome(req,*args,**kwargs):
     ser = TransactionSerializer(transactionData)
     data = ser.data
     return JsonResponse({"data" : data})
+
+def saveTransaction(req,*args,**kwargs):
+    param = json.loads(req.body)
+    newRec = Transactions()
+    newRec.code = param['code']
+    newRec.txnid = param['txnid']
+    newRec.companyid = param['companyid']
+    newRec.jobprofileid = param['jobprofileid']
+
+    newRec.save()
+    return JsonResponse({"data" : "saved"})
