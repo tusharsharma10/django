@@ -31,24 +31,27 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    #'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    #'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api',
-    'polls'
+    'polls',
+    'jobseeker'
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.security.SecurityMiddleware',
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'django.contrib.messages.middleware.MessageMiddleware',
+   # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'jobseeker.exceptions.customExceptionHandler',
+    'jobseeker.serializer.SerializerMiddleware'
 ]
 
 ROOT_URLCONF = 'cfehome.urls'
@@ -92,6 +95,14 @@ DATABASES = {
         'PASSWORD': 'password',
         'HOST': 'localhost',  # Or the address of your MySQL server
         'PORT': '3306',       # The default MySQL port
+    },
+    'second_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'inbox',
+        'USER': 'root',
+        'PASSWORD': 'Km7Iv80l',
+        'HOST': '192.168.40.115',
+        'PORT': '3306',
     }
 }
 
